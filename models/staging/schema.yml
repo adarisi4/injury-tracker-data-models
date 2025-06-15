@@ -1,0 +1,25 @@
+version: 2
+
+sources:
+  - name: INJURY_SCHEMA
+    schema: INJURY_SCHEMA
+    database: SPORTS_DB
+    tables:
+      - name: INJURIES
+        description: "Raw injury data loaded daily from S3"
+        columns:
+          - name: INJURY_ID
+            description: "Unique identifier for injury record"
+            tests: [not_null]
+
+models:
+  - name: stg_injuries
+    description: "Staging model for the injuries table"
+    columns:
+      - name: INJURY_ID
+        description: "Unique Identifier for injury"
+        tests: [not_null, unique]
+
+      - name: PLAYER_ID
+        description: "Unique Identifier for player that was injured"
+        tests: [not_null]

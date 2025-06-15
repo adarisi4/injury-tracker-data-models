@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: fct_injuries
+    description: "Fact table for injuries joined to all dim tables"
+    columns:
+      - name: INJURY_ID
+        tests: [not_null, unique]
+
+      - name: PLAYER_ID
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_players')
+              field: PLAYER_ID
+
+      - name: STATUS_ID
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_status')
+              field: STATUS_ID
+
+      - name: SPORT_ID
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_sport')
+              field: SPORT_ID
+
+      - name: BODY_PART_ID
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_body_part')
+              field: BODY_PART_ID

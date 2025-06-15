@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: int_joined_injuries
+    description: "Intermediate model joining injury severity with dimension tables"
+    columns:
+      - name: INJURY_ID
+        description: "Unique identifier for the injury record"
+        tests: [not_null]
+
+      - name: PLAYER_ID
+        description: "Foreign key to dim_players"
+
+      - name: STATUS_ID
+        description: "Foreign key to dim_status"
+
+      - name: BODY_PART_ID
+        description: "Foreign key to dim_body_part"
+
+      - name: SPORT_ID
+        description: "Foreign key to dim_sport"
+
+      - name: INJURY_DESCRIPTION
+        description: "Detailed description of the injury"
+
+      - name: DATE_OF_INJURY
+        description: "When the injury occurred"
+
+      - name: TODAY_DATE
+        description: "When the injury was logged"
+
+      - name: INJURY_SEVERITY
+        description: "Severity level mapped from injury status"
+
