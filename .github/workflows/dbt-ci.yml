@@ -1,0 +1,41 @@
+name: dbt CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  dbt:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install dbt-core dbt-snowflake
+
+      - name: Run dbt deps
+        run: dbt deps
+
+      - name: Run dbt build (includes run + test)
+        env:
+          DBT_USER: ${{ secrets.DBT_USER }}
+          DBT_PASSWORD: ${{ secrets.DBT_PASSWORD }}
+          DBT_ACCOUNT: ${{ secrets.DBT_ACCOUNT }}
+          DBT_ROLE: ${{ secrets.DBT_ROLE }}
+          DBT_DATABASE: ${{ secrets.DBT_DATABASE }}
+          DBT_WAREHOUSE: ${{ secrets.DBT_WAREHOUSE }}
+          DBT_SCHEMA: ${{ secrets.DBT_SCHEMA }}
+        run: |
+          dbt build --profiles-dir .
+
