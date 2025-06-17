@@ -38,4 +38,3 @@ jobs:
           DBT_SCHEMA: ${{ secrets.DBT_SCHEMA }}
         run: |
           dbt build --profiles-dir .
-
