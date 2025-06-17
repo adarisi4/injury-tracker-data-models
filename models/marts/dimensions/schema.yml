@@ -1,36 +1,55 @@
 version: 2
 
 models:
-  - name: fct_injuries
-    description: "Fact table for injuries joined to all dim tables"
+  - name: dim_players
+    description: "Dimension table for player information"
     columns:
-      - name: INJURY_ID
+      - name: PLAYER_ID
+        description: "Unique identifier for each player"
         tests: [not_null, unique]
 
-      - name: PLAYER_ID
-        tests:
-          - not_null
-          - relationships:
-              to: ref('dim_players')
-              field: PLAYER_ID
+      - name: PLAYER_NAME
+        description: "Name of the player"
+        tests: [not_null]
 
-      - name: STATUS_ID
-        tests:
-          - not_null
-          - relationships:
-              to: ref('dim_status')
-              field: STATUS_ID
+      - name: PLAYER_POSITION
+        description: "Player's playing position"
+
+      - name: TEAM
+        description: "Team the player belongs to"
 
       - name: SPORT_ID
-        tests:
-          - not_null
-          - relationships:
-              to: ref('dim_sport')
-              field: SPORT_ID
+        description: "Foreign key to sport type"
 
+  - name: dim_status
+    description: "Dimension table for injury statuses"
+    columns:
+      - name: STATUS_ID
+        description: "Unique identifier for status"
+        tests: [not_null, unique]
+
+      - name: STATUS
+        description: "The injury status label (e.g., Out, Day-to-Day, etc.)"
+        tests: [not_null]
+
+  - name: dim_body_part
+    description: "Dimension table for body parts injured"
+    columns:
       - name: BODY_PART_ID
-        tests:
-          - not_null
-          - relationships:
-              to: ref('dim_body_part')
-              field: BODY_PART_ID
+        description: "Unique identifier for body part"
+        tests: [not_null, unique]
+
+      - name: BODY_PART
+        description: "Name of the body part"
+        tests: [not_null]
+
+  - name: dim_sport
+    description: "Dimension table for sport types"
+    columns:
+      - name: SPORT_ID
+        description: "Unique identifier for each sport"
+        tests: [not_null, unique]
+
+      - name: SPORT
+        description: "Sport name (e.g., NBA, NFL)"
+        tests: [not_null]

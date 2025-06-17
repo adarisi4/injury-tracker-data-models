@@ -2,33 +2,52 @@ version: 2
 
 models:
   - name: int_joined_injuries
-    description: "Intermediate model joining injury severity with dimension tables"
+    description: >
+      Intermediate model that combines injury data with player, sport, status, and body part
+      dimension tables. It also maps a severity level to each injury based on status.
     columns:
       - name: INJURY_ID
         description: "Unique identifier for the injury record"
-        tests: [not_null]
+        tests:
+          - not_null
+          - unique
 
       - name: PLAYER_ID
-        description: "Foreign key to dim_players"
+        description: "Foreign key referencing dim_players.player_id"
+        tests:
+          - not_null
 
       - name: STATUS_ID
-        description: "Foreign key to dim_status"
+        description: "Foreign key referencing dim_status.status_id"
+        tests:
+          - not_null
 
       - name: BODY_PART_ID
-        description: "Foreign key to dim_body_part"
+        description: "Foreign key referencing dim_body_part.body_part_id"
+        tests:
+          - not_null
 
       - name: SPORT_ID
-        description: "Foreign key to dim_sport"
+        description: "Foreign key referencing dim_sport.sport_id"
+        tests:
+          - not_null
 
       - name: INJURY_DESCRIPTION
-        description: "Detailed description of the injury"
+        description: "Detailed description of the injury (e.g. 'Right ankle sprain')"
+        tests:
+          - not_null
 
       - name: DATE_OF_INJURY
-        description: "When the injury occurred"
+        description: "Date when the injury occurred"
+        tests:
+          - not_null
 
       - name: TODAY_DATE
-        description: "When the injury was logged"
+        description: "Date when the injury record was last updated or logged"
+        tests:
+          - not_null
 
       - name: INJURY_SEVERITY
-        description: "Severity level mapped from injury status"
-
+        description: "Categorized severity of the injury (e.g. 'mild', 'moderate', 'severe')"
+        tests:
+          - not_null

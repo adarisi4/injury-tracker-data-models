@@ -2,8 +2,8 @@ version: 2
 
 sources:
   - name: INJURY_SCHEMA
-    schema: INJURY_SCHEMA
     database: SPORTS_DB
+    schema: INJURY_SCHEMA
     tables:
       - name: INJURIES
         description: "Raw injury data loaded daily from S3"
@@ -14,7 +14,7 @@ sources:
 
 models:
   - name: stg_injuries
-    description: "Staging model for the injuries table"
+    description: "Staging model for the injuries source table"
     columns:
       - name: INJURY_ID
         description: "Unique Identifier for injury"

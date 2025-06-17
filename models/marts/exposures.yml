@@ -1,0 +1,16 @@
+version: 2
+
+exposures:
+  - name: sports_injury_dashboard
+    label: Sports Injury Trends Dashboard
+    type: dashboard
+    maturity: high
+    description: >
+      Matplotlib graphs displaying injury trends by body part, team, and status 
+      for sports analysts and team decision-makers.
+    depends_on:
+      - ref('fct_injuries')
+    owner:
+      name: Anubhav Darisi
+      email: anubhav.darisi@gmail.com
+      dbt_role: ACCOUNTADMIN
