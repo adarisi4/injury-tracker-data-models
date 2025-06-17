@@ -37,4 +37,4 @@ jobs:
           DBT_DATABASE: ${{ secrets.DBT_DATABASE }}
           DBT_WAREHOUSE: ${{ secrets.DBT_WAREHOUSE }}
           DBT_SCHEMA: ${{ secrets.DBT_SCHEMA }}
-        run: dbt build --profiles-dir .dbt
+        run: dbt build --profiles-dir .
