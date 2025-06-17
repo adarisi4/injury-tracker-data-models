@@ -1,7 +1,15 @@
+name: dbt CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
 jobs:
   dbt:
     runs-on: ubuntu-latest
-    environment: snowflake_credentials   
+    environment: snowflake_credentials
 
     steps:
       - name: Checkout code
