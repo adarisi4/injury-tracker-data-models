@@ -1,0 +1,9 @@
+requests
+BeautifulSoup
+pandas
+psycopg2
+boto3
+io
+csv
+datetime
+matplotlib
