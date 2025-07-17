@@ -34,7 +34,7 @@ This project builds a modular data pipeline with:
 
 - Built a full dbt project with **staging → intermediate → mart** layers using modular, testable models in Snowflake
 - Created **custom schema tests and `dbt test` assertions** to enforce data quality (nulls, uniqueness, accepted values)
-- Developed **Python ETL scripts** to scrape and preprocess sports injury data, storing cleaned datasets in S3
+- Developed **Python ETL scripts** to scrape and preprocess sports injury data from ESPN, storing cleaned datasets in S3
 - Automated daily ingestion using **AWS EventBridge to trigger Lambda**, loading raw injury CSVs into S3 for processing
 - Integrated dbt with **Snowflake external stages** to transform raw S3 data into clean, analytics-ready models
 - Implemented **CI/CD with GitHub Actions** to auto-run `dbt build` on push, ensuring models pass tests before deployment
