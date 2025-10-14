@@ -38,7 +38,7 @@ This project builds a modular data pipeline with:
 - Automated daily ingestion using **AWS EventBridge to trigger Lambda**, loading raw injury CSVs into S3 for processing
 - Integrated dbt with **Snowflake external stages** to transform raw S3 data into clean, analytics-ready models
 
-📊 Injury Data Visualizations (April–July)
+## 📊 Injury Data Visualizations (April–July)
 
 This section highlights key trends in sports injuries across multiple dimensions—body part, sport, player, and injury status—using data from April 18–19, June 13–15, and July 9–11. Visualizations were built using pandas and matplotlib.
 
@@ -74,7 +74,7 @@ Basketball and Hockey had notable entries like Injured Reserve and Day-to-Day.
 
 Statuses like “Questionable” and “Day-to-Day” are often used for precautionary or recovery-phase listings, not always indicating severe injuries.
 
-✅ Summary
+## ✅ Summary
 
 Knee injuries remain the most prevalent across all sports.
 
